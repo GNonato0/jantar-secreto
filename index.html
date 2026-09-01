@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Jantar Secreto</title>
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+
+  <!-- Menu Superior (Inicia Escondido) -->
+  <nav id="navbar" class="navbar menu-oculto">
+    <a href="#">Home</a>
+    <a href="#historia">História</a>
+    <a href="#cardapio">Cardápio</a>
+    <a href="#avaliacoes">Avaliações</a>
+    <a href="#reserva">Reserva</a>
+  </nav>
+
+  <!-- Banner Principal -->
+  <header class="hero">
+    <!-- Ícone do Cloche que abre/fecha o menu superior -->
+    <img src="assets/img/cloche.png" id="cloche-btn" class="cloche-icon" alt="Menu">
+
+    <div class="hero-content">
+      <h1>Você já comeu <br><span>CARNE DE GAIVOTA?</span></h1>
+      <p>Caso não, essa pode ser a primeira</p>
+      
+      <!-- Seta que se a pessoa não clica vai direto para as avaliações -->
+      <div id="scroll-arrow" class="arrow">V</div>
+    </div>
+  </header>
+
+  <!-- Seções da Página -->
+  <section id="cardapio" class="cardapio-oculto"><h2>Cardápio</h2></section>
+
+  <section id="avaliacoes" class="avaliacoes-container">
+    <h2>Avaliações</h2>
+    <div class="carrossel-wrapper">
+    <!-- Botão Esquerdo -->
+    <button id="btn-prev" class="btn-carrossel">&lt;</button>
+    <!-- (cards lado a lado) -->
+    <div id="carrossel-track" class="carrossel-track">
+
+      <!-- Card 1 -->
+      <div class="card-avaliacao">
+        <div class="user-info">
+          <img src="assets/img/avatar.png" alt="Téo Avelar" class="avatar">
+          <h3>Téo Avelar</h3>
+        </div>
+        <p>Um lugar absolutamente perfeito. Pensei em cada detalhe para que ela, minha futura esposa, gostasse daqui e, com o tempo, vai aprender a amar este lugar tanto quanto eu.</p>
+        <div class="talheres">
+          <img src="assets/img/talheres.png" alt="Nota">
+          <img src="assets/img/talheres.png" alt="Nota">
+          <img src="assets/img/talheres.png" alt="Nota">
+          <img src="assets/img/talheres.png" alt="Nota">
+        </div>
+      </div>
+
+      <!-- Card 2 -->
+      <div class="card-avaliacao">
+        <div class="user-info">
+          <img src="assets/img/avatar.png" alt="Victoria Bravo" class="avatar">
+          <h3>Victoria Bravo</h3>
+        </div>
+        <p>O ambiente é silencioso e as mesas dos cantos oferecem uma boa visão de todas as saídas, e com isso consegui ver que alguém estava me observando...</p>
+        <div class="talheres">
+          <img src="assets/img/talheres.png" alt="Nota">
+          <img src="assets/img/talheres.png" alt="Nota">
+          <img src="assets/img/talheres.png" alt="Nota">
+        </div>
+      </div>
+
+      <!-- Card 3 -->
+      <div class="card-avaliacao">
+        <div class="user-info">
+          <img src="assets/img/avatar.png" alt="Alessandro Montes" class="avatar">
+          <h3>Alessandro Montes</h3>
+        </div>
+        <p>Um lugar aceitável para observar a mediocridade alheia enquanto se bebe um bom vinho, já que não gosto de cerveja. Meu amigo achou chato porque não tinha poker.</p>
+        <div class="talheres">
+          <img src="assets/img/talheres.png" alt="Nota">
+          <img src="assets/img/talheres.png" alt="Nota">
+          <img src="assets/img/talheres.png" alt="Nota">
+          <img src="assets/img/talheres.png" alt="Nota">
+          <img src="assets/img/talheres.png" alt="Nota">
+        </div>
+      </div>
+
+      <!-- Card 4 -->
+      <div class="card-avaliacao">
+        <div class="user-info">
+          <img src="assets/img/avatar.png" alt="Zak Vasconcellos" class="avatar">
+          <h3>Zak Vasconcellos</h3>
+        </div>
+        <p>Tudo muito limpinho, muito fútil e perfeitamente esquecível. O garçom me olhou feio porque acendi um cigarro na mesa. Relaxa cara, ninguém aqui vai estar vivo semana que vem mesmo.</p>
+        <div class="talheres">
+          <img src="assets/img/talheres.png" alt="Nota">
+          <img src="assets/img/talheres.png" alt="Nota">
+          <img src="assets/img/talheres.png" alt="Nota">
+          <img src="assets/img/talheres.png" alt="Nota">
+        </div>
+      </div>
+
+      <!-- Card 5 -->
+      <div class="card-avaliacao">
+        <div class="user-info">
+          <img src="assets/img/avatar.png" alt="Verônica Torres" class="avatar">
+          <h3>Verônica Torres</h3>
+        </div>
+        <p>Um lugar perigoso disfarçado de alta gastronomia, perfeito para quem quer descobrir monstros reais escondidos sob ternos caros.</p>
+        <div class="talheres">
+          <img src="assets/img/talheres.png" alt="Nota">
+          <img src="assets/img/talheres.png" alt="Nota">
+          <img src="assets/img/talheres.png" alt="Nota">
+        </div>
+      </div>
+
+      <!-- Card 6 -->
+      <div class="card-avaliacao">
+        <div class="user-info">
+          <img src="assets/img/avatar.png" alt="Eva Carvalho" class="avatar">
+          <h3>Eva Carvalho</h3>
+        </div>
+        <p>O ambiente é impecável, ideal para fotos em família e para mostrar que está tudo bem. A fachada e os sorrisos parecem saídos de um comercial de margarina.</p>
+        <div class="talheres">
+          <img src="assets/img/talheres.png" alt="Nota">
+          <img src="assets/img/talheres.png" alt="Nota">
+          <img src="assets/img/talheres.png" alt="Nota">
+          <img src="assets/img/talheres.png" alt="Nota">
+        </div>
+      </div>
+  </div>
+
+  <!-- Botão Direito -->
+  <button id="btn-next" class="btn-carrossel">&gt;</button>
+  </div>
+
+  </section>
+  <section id="reserva"><h2>Reserva</h2></section>
+  <section id="historia"><h2>História</h2></section>
+
+  <script src="assets/js/main.js"></script>
+</body>
+
+<!-- Rodapé da página -->
+<footer id="rodape">
+  <p>&copy; 2026 Jantar Secreto </p>
+  
+  <!-- Créditos dos Ícones Obrigada a utilizar pelo Flaticon -->
+  <div class="creditos">
+    <a href="https://www.flaticon.com/br/icones-gratis/garfo" title="garfo ícones" target="_blank" rel="noopener noreferrer">
+      Garfo ícones criados por Magnific - Flaticon
+    </a>
+  </div>
+</footer>
+
+</html>
