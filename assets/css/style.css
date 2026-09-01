@@ -1,1 +1,203 @@
+@font-face { /* As fontes que usarmos vem antes das regras do body */
+  font-family: "ZT Talk";
+  src: url("../fonts/ZTTalk-Bold.ttf") format("truetype");
+  font-weight: 700;
+  font-style: normal;
+}
 
+@font-face {
+  font-family: "ZT Talk";
+  src: url("../fonts/ZTTalk-BoldItalic.ttf") format("truetype");
+  font-weight: 700;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: "Munson";
+  src: url("../fonts/Munson_BoldItalic.otf") format("opentype");
+  font-weight: 700;
+  font-style: normal;
+}
+
+
+html, body {/*Isso impede que apareça uma barra horizontal na página inteira*/
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body { margin: 0; font-family: sans-serif; background-color: #700000; color: white; }
+
+/* Menu Escondido por padrão */
+.navbar {
+  display: flex;
+  justify-content: space-around;
+  background: white;
+  padding: 15px;
+  transition: all 0.3s ease-in-out;
+}
+
+.navbar a { color: black; text-decoration: none; font-weight: bold; }
+
+/* Classe que esconde o menu */
+.menu-oculto {
+  display: none;
+}
+
+.hero h1 {
+  font-family: "ZT Talk", sans-serif;
+  font-style: italic;
+  font-weight: 700;
+}
+
+.hero { position: relative; text-align: center; padding: 100px 20px; }
+.hero h1 span { background: #fff; color: #700000; padding: 5px 15px; display: inline-block; font-size: 2.5rem; }
+
+
+
+/* Cloche no canto superior direito */
+.cloche-icon { 
+  position: absolute; 
+  top: 0;  /* Encosta a imagem exatamente no topo da barra vermelha */
+  right: 5%;  /* Distância da borda direita */
+  width: 90px;  /* Aumenta o tamanho do cloche */
+  cursor: pointer;
+  z-index: 10;  /* Esse garante que ele fique por cima dos elementos */
+  transition: transform 0.2s ease, top 0.2s ease;
+}
+
+/* Efeito de quando passar o mouse para dar destaque */
+.cloche-icon:hover {
+  transform: scale(1.08); 
+}
+
+.arrow { font-size: 2rem; margin-top: 20px; cursor: pointer; }
+
+.cardapio-oculto {
+  display: none;
+}
+
+section h2 { /*Nome das seções Cardápio, Avaliações,etc*/
+  font-family: "Munson", serif;
+  font-weight: 750;
+  font-size: 3rem;       /* Aumenta o tamanho da fonte */
+  text-align: center;    /* Título Centralizado */
+  margin: 0 auto 30px;   /* Centraliza e adiciona espaço abaixo */
+}
+
+/* Container de Avaliações */
+.avaliacoes-container {
+  background-color: #4a0000; /* Tom mais escuro para contrastar com o #700000 do fundo */
+  padding: 60px 20px;
+  text-align: center;
+  width: 100%; /* Faz a faixa de cor ir de ponta a ponta da tela */
+}
+
+/* Container estendido para ocupar mais espaço na tela */
+.carrossel-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 95%;
+  max-width: 1300px;
+  margin: 30px auto 0;
+  overflow: hidden;
+}
+
+/* Trilho com mais espaçamento */
+.carrossel-track {
+  display: flex;
+  gap: 25px;
+  overflow-x: auto;
+  overflow-y: hidden;
+  scroll-behavior: smooth;
+  padding: 15px 5px;
+  scrollbar-width: none;
+}
+
+.carrossel-track::-webkit-scrollbar {
+  display: none;
+}
+
+.carrossel-track::-webkit-scrollbar {
+  display: none;
+}
+
+.card-avaliacao {
+  background-color: #ffffff;
+  color: #000000;
+  min-width: 380px;
+  max-width: 380px;
+  padding: 25px;
+  border-radius: 25px;
+  text-align: left;
+  flex-shrink: 0;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+.user-info {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin-bottom: 15px;
+}
+
+.avatar {
+  width: 50px;
+  height: 50px;
+  background-color: #cccccc; /* Fundo cinza padrão como na imagem caso não tenha foto */
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.user-info h3 {
+  font-size: 1.4rem;
+  font-weight: bold;
+  margin: 0;
+}
+
+.card-avaliacao p {
+  font-size: 0.95rem;
+  line-height: 1.4;
+  color: #222222;
+  margin-bottom: 20px;
+  min-height: 80px; /* Mantém o alinhamento uniforme do texto */
+}
+
+/* Ícones de Talheres (Nota) */
+.talheres {
+  display: flex;
+  gap: 8px;
+}
+
+.talheres img {
+  width: 24px;
+  height: 24px;
+}
+
+/* Botões do Carrossel */
+.btn-carrossel {
+  background: white;
+  color: #700000;
+  border: none;
+  font-size: 1.8rem;
+  font-weight: bold;
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  cursor: pointer;
+  z-index: 5;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  transition: transform 0.2s ease;
+}
+
+.btn-carrossel:hover {
+  transform: scale(1.1);
+}
+
+#btn-prev { margin-right: 10px; }
+#btn-next { margin-left: 10px; }
