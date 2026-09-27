@@ -3,155 +3,716 @@
 <head>
   <meta charset="UTF-8">
   <title>Jantar Secreto</title>
+  <link rel="icon" type="image/png" href="assets/img/favicon.png">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Carattere&display=swap" rel="stylesheet">
+
   <link rel="stylesheet" href="assets/css/style.css">
+  
 </head>
 <body>
 
   <!-- Menu Superior (Inicia Escondido) -->
-  <nav id="navbar" class="navbar menu-oculto">
-    <a href="#">Home</a>
-    <a href="#historia">História</a>
-    <a href="#cardapio">Cardápio</a>
-    <a href="#avaliacoes">Avaliações</a>
-    <a href="#reserva">Reserva</a>
-  </nav>
+<nav id="navbar" class="navbar menu-oculto">
+  <a href="#home">Home</a>
+  <a href="#cardapio">Cardápio</a>
+  <a href="#avaliacoes">Avaliações</a>
+  <a href="#reserva">Reserva</a>
+  <a href="#historia">História</a>
+</nav>
 
   <!-- Banner Principal -->
   <header class="hero">
     <!-- Ícone do Cloche que abre/fecha o menu superior -->
-    <img src="assets/img/cloche.png" id="cloche-btn" class="cloche-icon" alt="Menu">
+  <img
+    src="assets/img/cloche.png"
+    id="cloche-btn"
+    class="cloche-icon"
+    alt="Menu"
+  >
 
     <div class="hero-content">
-      <h1>Você já comeu <br><span>CARNE DE GAIVOTA?</span></h1>
-      <p>Caso não, essa pode ser a primeira</p>
-      
-      <!-- Seta que se a pessoa não clica vai direto para as avaliações -->
-      <div id="scroll-arrow" class="arrow">V</div>
+
+    <h1 class="logo-jantar">
+      <span class="jantar">
+      <span class="j">J</span>antar
+    </span>
+    <span class="secreto">SECRETO</span>
+    </h1>
+
+    <p>
+    Algumas experiências não são para todos.
+    </p>
+
+      <!--  ÍCONE DE SETA BAIXO ADICIONADO AQUI -->
+      <div id="scroll-arrow" class="arrow" aria-label="Rolar para o cardápio">
+        <img src="assets/img/chevron-baixo.png" alt="Seta para baixo">
+      </div>
     </div>
   </header>
 
   <!-- Seções da Página -->
-  <section id="cardapio" class="cardapio-oculto"><h2>Cardápio</h2></section>
+  <section id="cardapio" class="cardapio-oculto">
+    <h2>CARDÁPIO SECRETO</h2>
+    <!-- ==============================SELETOR DOS DIAS (Pessoa pode escolher entre Terça, quinta e sábado )=============================== -->
+
+    <div class="dias-cardapio">
+      <button class="dia-btn ativo" data-dia="terca">
+        TERÇA-FEIRA
+      </button>
+
+      <button class="dia-btn" data-dia="quinta">
+        QUINTA-FEIRA
+      </button>
+
+      <button class="dia-btn" data-dia="sabado">
+        SÁBADO
+      </button>
+    </div>
+
+    <!-- =====================================================TERÇA-FEIRA====================================================== -->
+    <div class="menu-dia ativo" id="terca">
+      <div class="titulo-dia">
+        <span>MENU</span>
+        <h3>TERÇA-FEIRA</h3>
+      </div>
+
+      <div class="menu-carousel">
+      <button class="menu-arrow prev" data-carousel="terca" aria-label="Prato anterior">
+      <img src="assets/img/seta-esquerda.png" alt="">
+      </button>
+
+        <div class="menu-track">
+          <!-- PRATO 01 -->
+          <article class="menu-card">
+            <div class="menu-card-imagem">
+              <img src="assets/img/carpaccio.jpg" alt="Carpaccio de Gaivota">
+            </div>
+            <div class="menu-card-info">
+              <span class="numero-prato">01</span>
+              <span class="categoria-prato">ENTRADA</span>
+              <h4>Carpaccio de Gaivota</h4>
+              <p>Finíssimas lâminas de carne crua servidas resfriadas com temperos requintados como entrada.</p>
+            </div>
+          </article>
+
+          <!-- PRATO 02 -->
+          <article class="menu-card">
+            <div class="menu-card-imagem">
+              <img src="assets/img/file-wellington.jpg" alt="Filé Wellington">
+            </div>
+            <div class="menu-card-info">
+              <span class="numero-prato">02</span>
+              <span class="categoria-prato">PRINCIPAL</span>
+              <h4>Filé Wellington</h4>
+              <p>Carne envolta em uma camada de cogumelos e assada perfeitamente dentro de uma massa folhada dourada.</p>
+            </div>
+          </article>
+
+          <!-- PRATO 03 -->
+          <article class="menu-card">
+            <div class="menu-card-imagem">
+              <img src="assets/img/steak-tartare.jpg" alt="Steak Tartare">
+            </div>
+            <div class="menu-card-info">
+              <span class="numero-prato">03</span>
+              <span class="categoria-prato">ESPECIAL</span>
+              <h4>Steak Tartare</h4>
+              <p>Carne picada na ponta da faca e servida crua, misturada com condimentos finos e gema de ovo.</p>
+            </div>
+          </article>
+
+          <!-- PRATO 04 -->
+          <article class="menu-card">
+            <div class="menu-card-imagem">
+              <img src="assets/img/consome.jpg" alt="Consomê">
+            </div>
+            <div class="menu-card-info">
+              <span class="numero-prato">04</span>
+              <span class="categoria-prato">ESPECIAL</span>
+              <h4>Consomê</h4>
+              <p>Um caldo de carne totalmente clarificado, servido quente como uma dos pratos mais sofisticadas para abrir o apetite dos convidados.</p>
+            </div>
+          </article>
+        </div>
+
+        <button class="menu-arrow next" data-carousel="terca" aria-label="Próximo prato">
+          <img src="assets/img/seta-direita.png" alt="">
+        </button>
+
+      </div>
+
+      <div class="menu-indicadores"></div>
+    </div>
+
+    <!-- =====================================================QUINTA-FEIRA====================================================== -->
+    <div class="menu-dia" id="quinta">
+      <div class="titulo-dia">
+        <span>MENU</span>
+        <h3>QUINTA-FEIRA</h3>
+      </div>
+
+      <div class="menu-carousel">
+      <button class="menu-arrow prev" data-carousel="quinta" aria-label="Prato anterior">
+      <img src="assets/img/seta-esquerda.png" alt="">
+      </button>
+
+        <div class="menu-track">
+          <!-- PRATO 01 -->
+          <article class="menu-card">
+            <div class="menu-card-imagem">
+              <img src="assets/img/costelas.jpg" alt="Costeletas com molho de frutas vermelhas">
+            </div>
+            <div class="menu-card-info">
+              <span class="numero-prato">01</span>
+              <span class="categoria-prato">PRINCIPAL</span>
+              <h4>Costeletas com Molho de Frutas Vermelhas</h4>
+              <p>Cortes de carne assados na temperatura ideal e finalizados com redução de frutas silvestres.</p>
+            </div>
+          </article>
+
+          <!-- PRATO 02 -->
+          <article class="menu-card">
+            <div class="menu-card-imagem">
+              <img src="assets/img/ossobuco.jpg" alt="Ossobuco cozido lentamente">
+            </div>
+            <div class="menu-card-info">
+              <span class="numero-prato">02</span>
+              <span class="categoria-prato">PRINCIPAL</span>
+              <h4>Ossobuco Cozido Lentamente</h4>
+              <p>Corte bovino simulado através da carne, servido macio com o tutano.</p>
+            </div>
+          </article>
+
+          <!-- PRATO 03 -->
+          <article class="menu-card">
+            <div class="menu-card-imagem">
+              <img src="assets/img/hamburger.jpg" alt="Hambúrguer Gourmet">
+            </div>
+            <div class="menu-card-info">
+              <span class="numero-prato">03</span>
+              <span class="categoria-prato">ESPECIAL</span>
+              <h4>Hambúrguer Gourmet</h4>
+              <p>Hambúrguer gourmet suculento no pão australiano, com sabor marcante e uma combinação irresistível.</p>
+            </div>
+          </article>
+
+          <!-- PRATO 04 -->
+          <article class="menu-card">
+            <div class="menu-card-imagem">
+              <img src="assets/img/file-molho-escuro.jpg" alt="Miúdos e iguarias exóticas">
+            </div>
+            <div class="menu-card-info">
+              <span class="numero-prato">04</span>
+              <span class="categoria-prato">EXCLUSIVO</span>
+               <h4>Filé ao Molho Escuro</h4>
+               <p>Um suculento filé bovino servido ao ponto, coberto por um molho intenso e misterioso, acompanhado de purê cremoso. Uma experiência feita para despertar os sentidos.</p>
+            </div>
+          </article>
+        </div>
+
+        <button class="menu-arrow next" data-carousel="quinta" aria-label="Próximo prato">
+        <img src="assets/img/seta-direita.png" alt="">
+        </button>
+      </div>
+
+      <div class="menu-indicadores"></div>
+    </div>
+
+    <!-- =====================================================SÁBADO====================================================== -->
+    <div class="menu-dia" id="sabado">
+      <div class="titulo-dia">
+        <span>MENU</span>
+        <h3>SÁBADO</h3>
+      </div>
+
+      <div class="menu-carousel">
+    <button class="menu-arrow prev" data-carousel="sabado" aria-label="Prato anterior">
+      <img src="assets/img/seta-esquerda.png" alt="">
+    </button>
+
+        <div class="menu-track">
+          <!-- PRATO 01 -->
+          <article class="menu-card">
+            <div class="menu-card-imagem">
+              <img src="assets/img/estrogonofe_flambado.png" alt="Estrogonofe Flambado">
+            </div>
+            <div class="menu-card-info">
+              <span class="numero-prato">01</span>
+              <span class="categoria-prato">PRINCIPAL</span>
+              <h4>Estrogonofe Flambado</h4>
+              <p>Uma versão sofisticada do prato, preparada com conhaque e servida para os clientes grã-finos.</p>
+            </div>
+          </article>
+
+          <!-- PRATO 02 -->
+          <article class="menu-card">
+            <div class="menu-card-imagem">
+              <img src="assets/img/ragu_polenta.jpg" alt="Ragu com polenta cremosa">
+            </div>
+            <div class="menu-card-info">
+              <span class="numero-prato">02</span>
+              <span class="categoria-prato">PRINCIPAL</span>
+              <h4>Ragu com Polenta Cremosa</h4>
+              <p>Carne desfiada cozida por horas em molho de vinho tinto, acompanhada de polenta italiana.</p>
+            </div>
+          </article>
+
+          <!-- PRATO 03 -->
+          <article class="menu-card">
+            <div class="menu-card-imagem">
+              <img src="assets/img/costela_crosta_ervas.jpg" alt="Costelas com crosta de ervas">
+            </div>
+            <div class="menu-card-info">
+              <span class="numero-prato">03</span>
+              <span class="categoria-prato">ESPECIAL</span>
+              <h4>Costelas com Crosta de Ervas</h4>
+              <p>Uma variação da receita tradicional, assada lentamente com ervas finas para mascarar o gosto característico da carne clandestina.</p>
+            </div>
+          </article>
+        </div>
+
+          <button class="menu-arrow next" data-carousel="sabado" aria-label="Próximo prato">
+            <img src="assets/img/seta-direita.png" alt="">
+          </button>
+      </div>
+
+      <div class="menu-indicadores"></div>
+    </div>
+  </section>
 
   <section id="avaliacoes" class="avaliacoes-container">
     <h2>Avaliações</h2>
     <div class="carrossel-wrapper">
-    <!-- Botão Esquerdo -->
-    <button id="btn-prev" class="btn-carrossel">&lt;</button>
-    <!-- (cards lado a lado) -->
-    <div id="carrossel-track" class="carrossel-track">
-
-      <!-- Card 1 -->
-      <div class="card-avaliacao">
-        <div class="user-info">
-          <img src="assets/img/avatar.png" alt="Téo Avelar" class="avatar">
-          <h3>Téo Avelar</h3>
+      <!-- Botão Esquerdo -->
+      <button id="btn-prev" class="btn-carrossel">&lt;</button>
+      <!-- (cards lado a lado) -->
+      <div id="carrossel-track" class="carrossel-track">
+        <!-- Card 1 -->
+        <div class="card-avaliacao">
+          <div class="user-info">
+            <img src="assets/img/avaliacoes/teo.png" alt="Téo Avelar" class="avatar">
+            <h3>Téo Avelar</h3>
+          </div>
+          <p>Um lugar absolutamente perfeito. Pensei em cada detalhe para que ela, minha futura esposa, gostasse daqui e, com o tempo, vai aprender a amar este lugar tanto quanto eu.</p>
+          <div class="talheres">
+            <img src="assets/img/talheres.png" alt="Nota">
+            <img src="assets/img/talheres.png" alt="Nota">
+            <img src="assets/img/talheres.png" alt="Nota">
+            <img src="assets/img/talheres.png" alt="Nota">
+          </div>
         </div>
-        <p>Um lugar absolutamente perfeito. Pensei em cada detalhe para que ela, minha futura esposa, gostasse daqui e, com o tempo, vai aprender a amar este lugar tanto quanto eu.</p>
-        <div class="talheres">
-          <img src="assets/img/talheres.png" alt="Nota">
-          <img src="assets/img/talheres.png" alt="Nota">
-          <img src="assets/img/talheres.png" alt="Nota">
-          <img src="assets/img/talheres.png" alt="Nota">
+
+        <!-- Card 2 -->
+        <div class="card-avaliacao">
+          <div class="user-info">
+            <img src="assets/img/avaliacoes/victoria.png" alt="Victoria Bravo" class="avatar">
+            <h3>Victoria Bravo</h3>
+          </div>
+          <p>O ambiente é silencioso e as mesas dos cantos oferecem uma boa visão de todas as saídas, e com isso consegui ver que alguém estava me observando...</p>
+          <div class="talheres">
+            <img src="assets/img/talheres.png" alt="Nota">
+            <img src="assets/img/talheres.png" alt="Nota">
+            <img src="assets/img/talheres.png" alt="Nota">
+          </div>
+        </div>
+
+        <!-- Card 3 -->
+        <div class="card-avaliacao">
+          <div class="user-info">
+            <img src="assets/img/avaliacoes/ale.png" alt="Alessandro Montes" class="avatar">
+            <h3>Alessandro Montes</h3>
+          </div>
+          <p>Um lugar aceitável para observar a mediocridade alheia enquanto se bebe um bom vinho, já que não gosto de cerveja. Meu amigo achou chato porque não tinha poker.</p>
+          <div class="talheres">
+            <img src="assets/img/talheres.png" alt="Nota">
+            <img src="assets/img/talheres.png" alt="Nota">
+            <img src="assets/img/talheres.png" alt="Nota">
+            <img src="assets/img/talheres.png" alt="Nota">
+            <img src="assets/img/talheres.png" alt="Nota">
+          </div>
+        </div>
+
+        <!-- Card 4 -->
+        <div class="card-avaliacao">
+          <div class="user-info">
+            <img src="assets/img/avaliacoes/zak.png" alt="Zak Vasconcellos" class="avatar">
+            <h3>Zak Vasconcellos</h3>
+          </div>
+          <p>Tudo muito limpinho, muito fútil e perfeitamente esquecível. O garçom me olhou feio porque acendi um cigarro na mesa. Relaxa cara, ninguém aqui vai estar vivo semana que vem mesmo.</p>
+          <div class="talheres">
+            <img src="assets/img/talheres.png" alt="Nota">
+            <img src="assets/img/talheres.png" alt="Nota">
+            <img src="assets/img/talheres.png" alt="Nota">
+            <img src="assets/img/talheres.png" alt="Nota">
+          </div>
+        </div>
+
+        <!-- Card 5 -->
+        <div class="card-avaliacao">
+          <div class="user-info">
+            <img src="assets/img/avaliacoes/veronica.png" alt="Verônica Torres" class="avatar">
+            <h3>Verônica Torres</h3>
+          </div>
+          <p>Um lugar perigoso disfarçado de alta gastronomia, perfeito para quem quer descobrir monstros reais escondidos sob ternos caros.</p>
+          <div class="talheres">
+            <img src="assets/img/talheres.png" alt="Nota">
+            <img src="assets/img/talheres.png" alt="Nota">
+            <img src="assets/img/talheres.png" alt="Nota">
+          </div>
+        </div>
+
+        <!-- Card 6 -->
+        <div class="card-avaliacao">
+          <div class="user-info">
+            <img src="assets/img/avaliacoes/eva.png" alt="Eva Carvalho" class="avatar">
+            <h3>Eva Carvalho</h3>
+          </div>
+          <p>O ambiente é impecável, ideal para fotos em família e para mostrar que está tudo bem. A fachada e os sorrisos parecem saídos de um comercial de margarina.</p>
+          <div class="talheres">
+            <img src="assets/img/talheres.png" alt="Nota">
+            <img src="assets/img/talheres.png" alt="Nota">
+            <img src="assets/img/talheres.png" alt="Nota">
+            <img src="assets/img/talheres.png" alt="Nota">
+          </div>
         </div>
       </div>
 
-      <!-- Card 2 -->
-      <div class="card-avaliacao">
-        <div class="user-info">
-          <img src="assets/img/avatar.png" alt="Victoria Bravo" class="avatar">
-          <h3>Victoria Bravo</h3>
-        </div>
-        <p>O ambiente é silencioso e as mesas dos cantos oferecem uma boa visão de todas as saídas, e com isso consegui ver que alguém estava me observando...</p>
-        <div class="talheres">
-          <img src="assets/img/talheres.png" alt="Nota">
-          <img src="assets/img/talheres.png" alt="Nota">
-          <img src="assets/img/talheres.png" alt="Nota">
-        </div>
-      </div>
-
-      <!-- Card 3 -->
-      <div class="card-avaliacao">
-        <div class="user-info">
-          <img src="assets/img/avatar.png" alt="Alessandro Montes" class="avatar">
-          <h3>Alessandro Montes</h3>
-        </div>
-        <p>Um lugar aceitável para observar a mediocridade alheia enquanto se bebe um bom vinho, já que não gosto de cerveja. Meu amigo achou chato porque não tinha poker.</p>
-        <div class="talheres">
-          <img src="assets/img/talheres.png" alt="Nota">
-          <img src="assets/img/talheres.png" alt="Nota">
-          <img src="assets/img/talheres.png" alt="Nota">
-          <img src="assets/img/talheres.png" alt="Nota">
-          <img src="assets/img/talheres.png" alt="Nota">
-        </div>
-      </div>
-
-      <!-- Card 4 -->
-      <div class="card-avaliacao">
-        <div class="user-info">
-          <img src="assets/img/avatar.png" alt="Zak Vasconcellos" class="avatar">
-          <h3>Zak Vasconcellos</h3>
-        </div>
-        <p>Tudo muito limpinho, muito fútil e perfeitamente esquecível. O garçom me olhou feio porque acendi um cigarro na mesa. Relaxa cara, ninguém aqui vai estar vivo semana que vem mesmo.</p>
-        <div class="talheres">
-          <img src="assets/img/talheres.png" alt="Nota">
-          <img src="assets/img/talheres.png" alt="Nota">
-          <img src="assets/img/talheres.png" alt="Nota">
-          <img src="assets/img/talheres.png" alt="Nota">
-        </div>
-      </div>
-
-      <!-- Card 5 -->
-      <div class="card-avaliacao">
-        <div class="user-info">
-          <img src="assets/img/avatar.png" alt="Verônica Torres" class="avatar">
-          <h3>Verônica Torres</h3>
-        </div>
-        <p>Um lugar perigoso disfarçado de alta gastronomia, perfeito para quem quer descobrir monstros reais escondidos sob ternos caros.</p>
-        <div class="talheres">
-          <img src="assets/img/talheres.png" alt="Nota">
-          <img src="assets/img/talheres.png" alt="Nota">
-          <img src="assets/img/talheres.png" alt="Nota">
-        </div>
-      </div>
-
-      <!-- Card 6 -->
-      <div class="card-avaliacao">
-        <div class="user-info">
-          <img src="assets/img/avatar.png" alt="Eva Carvalho" class="avatar">
-          <h3>Eva Carvalho</h3>
-        </div>
-        <p>O ambiente é impecável, ideal para fotos em família e para mostrar que está tudo bem. A fachada e os sorrisos parecem saídos de um comercial de margarina.</p>
-        <div class="talheres">
-          <img src="assets/img/talheres.png" alt="Nota">
-          <img src="assets/img/talheres.png" alt="Nota">
-          <img src="assets/img/talheres.png" alt="Nota">
-          <img src="assets/img/talheres.png" alt="Nota">
-        </div>
-      </div>
-  </div>
-
-  <!-- Botão Direito -->
-  <button id="btn-next" class="btn-carrossel">&gt;</button>
-  </div>
-
+      <!-- Botão Direito -->
+      <button id="btn-next" class="btn-carrossel">&gt;</button>
+    </div>
   </section>
-  <section id="reserva"><h2>Reserva</h2></section>
-  <section id="historia"><h2>História</h2></section>
 
-  <script src="assets/js/main.js"></script>
-</body>
+  <section id="reserva" class="reserva">
+    <div class="reserva-card">
+      <div class="reserva-detalhe"></div>
 
-<!-- Rodapé da página -->
+      <div class="reserva-conteudo">
+        <span class="reserva-legenda">
+          CONVITE EXCLUSIVO
+        </span>
+
+        <h2>
+          QUE TAL PROVAR A CARNE
+          <span>MAIS SABOROSA DO MUNDO?</span>
+        </h2>
+
+        <p class="reserva-intro">
+          Algumas experiências começam com uma simples mensagem.
+          Conte-nos quem você é e escolha a noite em que deseja
+          fazer parte de um de nossos jantares secretos.
+        </p>
+
+        <!-- FORMULÁRIO DA RESERVA -->
+        <form id="form-reserva">
+          <!-- NOME -->
+          <div class="campo">
+            <label for="nome">SEU NOME</label>
+            <input
+              type="text"
+              id="nome"
+              name="nome"
+              placeholder="Como devemos chamá-lo?"
+              autocomplete="off"
+            >
+          </div>
+
+          <!-- ESCOLHA DO DIA -->
+          <div class="campo campo-dia">
+            <label>ESCOLHA SUA NOITE</label>
+
+            <div class="dias-reserva">
+              <button
+                type="button"
+                class="dia-reserva-btn"
+                data-dia="terca"
+              >
+                TERÇA-FEIRA
+              </button>
+
+              <button
+                type="button"
+                class="dia-reserva-btn"
+                data-dia="quinta"
+              >
+                QUINTA-FEIRA
+              </button>
+
+              <button
+                type="button"
+                class="dia-reserva-btn"
+                data-dia="sabado"
+              >
+                SÁBADO
+              </button>
+            </div>
+
+            <!-- Guarda o dia escolhido -->
+            <input
+              type="hidden"
+              id="dia-escolhido"
+              name="dia"
+            >
+            
+            <div id="dia-selecionado-feedback" class="dia-selecionado-feedback">
+              Selecione uma noite para continuar.
+            </div>
+          </div>
+
+          <!-- MENSAGEM -->
+          <div class="campo campo-mensagem">
+            <label for="mensagem">SUA MENSAGEM</label>
+            <textarea
+              id="mensagem"
+              name="mensagem"
+              rows="5"
+              placeholder="Escreva aqui o que você gostaria de nos contar..."
+            ></textarea>
+          </div>
+
+          <!-- FINAL -->
+          <div class="reserva-final">
+            <p>
+              <span>⚠</span>
+              Este convite é pessoal e intransferível.
+            </p>
+
+            <button
+              type="button"
+              id="btn-reserva"
+            >
+              ENVIAR MEU CONVITE
+              <span>→</span>
+            </button>
+          </div>
+        </form>
+
+        <!-- CONVITE GERADO -->
+        <div id="mensagem-sucesso" class="mensagem-sucesso">
+          <div class="convite-confirmado">
+            <span class="convite-status">
+              ✓ SOLICITAÇÃO RECEBIDA
+            </span>
+
+            <h3>
+              CONVITE ACEITO.
+            </h3>
+
+            <p class="convite-nome">
+              Sua presença foi registrada.
+            </p>
+
+            <div class="convite-detalhes">
+              <span>NOITE RESERVADA</span>
+              <strong id="convite-dia">
+                SÁBADO — 20:00
+              </strong>
+            </div>
+
+            <div class="convite-codigo">
+              <span>CÓDIGO</span>
+              <strong id="codigo-secreto">
+                JS-7K4M2
+              </strong>
+            </div>
+
+            <p class="convite-aviso">
+              Guarde este código.
+              <br>
+              Não compartilhe este convite.
+            </p>
+
+            <p class="convite-segredo">
+              Algumas portas não permanecem abertas
+              por muito tempo.
+            </p>
+
+            <button
+              type="button"
+              id="nova-reserva"
+              class="nova-reserva"
+            >
+              FAZER OUTRA SOLICITAÇÃO
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- FRASE ESCONDIDA -->
+      <div class="segredo">
+        ALGUMAS EXPERIÊNCIAS<br>
+        NÃO DEVEM SER COMPARTILHADAS.
+      </div>
+    </div> 
+  </section>
+
+  <section id="historia" class="historia">
+    <div class="historia-container">
+      <div class="historia-texto">
+        <span class="historia-legenda">
+          UMA DEDICATÓRIA AO RAPHA
+        </span>
+
+        <h2>
+          Obrigado,<br>
+          <span>Raphael.</span>
+        </h2>
+
+        <p>
+          Este site nasceu de uma história que ultrapassou
+          as páginas de um livro.
+        </p>
+
+        <p>
+          <em>Jantar Secreto</em> nos levou a uma história
+        onde nada é exatamente o que parece.
+        </p>
+
+        <p>
+          Entre jantares sofisticados, segredos escondidos e
+          personagens envolvidos em um universo cada vez mais
+          perturbador, a obra transforma uma simples refeição
+          em uma experiência marcada pela curiosidade,
+          pelo mistério e pelo inesperado.
+        </p>
+
+        <p>
+          Foi esse universo que nos inspirou a imaginar como
+          seria atravessar as páginas do livro e transformar
+          aquela atmosfera em uma experiência interativa.
+        </p>
+
+        <p>
+          Este site nasceu dessa ideia: criar uma pequena porta
+          de entrada para o universo de <em>Jantar Secreto</em>,
+          trazendo para a tela o contraste entre o luxo aparente
+          de um jantar exclusivo e os segredos que podem existir
+          por trás dele.
+        </p>
+
+        <p>
+          E, acima de tudo, este projeto é a nossa forma de
+          agradecer ao Rapha pela história, pela inspiração
+          e pela experiência que nos proporcionou através
+          de suas páginas.
+        </p>      
+
+        <p class="historia-destaque">
+          Obrigado por nos convidar para a mesa.
+        </p>
+
+        <a
+          href="https://www.raphaelmontes.com.br/"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="historia-botao"
+        >
+          CONHEÇA O SITE DO RAPHA
+        </a>
+      </div>
+
+      <div class="historia-imagem">
+        <div class="historia-imagem-moldura">
+          <img
+            src="assets/img/raphael_montes.jpg"
+            alt="Raphael Montes"
+          >
+        </div>
+
+        <span class="historia-assinatura">
+          RAPHAEL MONTES
+        </span>
+      </div>
+    </div>
+  </section>
+
 <footer id="rodape">
-  <p>&copy; 2026 Jantar Secreto </p>
-  
-  <!-- Créditos dos Ícones Obrigada a utilizar pelo Flaticon -->
-  <div class="creditos">
-    <a href="https://www.flaticon.com/br/icones-gratis/garfo" title="garfo ícones" target="_blank" rel="noopener noreferrer">
-      Garfo ícones criados por Magnific - Flaticon
-    </a>
+  <div class="footer-content">
+    <p>&copy; 2026 Jantar Secreto - Giovanna & Leticia</p>
+
+    <div class="footer-botoes">
+      <button type="button" id="btn-creditos" class="link-creditos">
+        Créditos de Ícones
+      </button>
+
+      <button type="button" id="btn-criadoras" class="link-creditos">
+        Criadoras
+      </button>
+    </div>
   </div>
 </footer>
 
+<!-- Modal de Créditos -->
+<div id="modal-creditos" class="modal-oculto">
+  <div class="modal-conteudo">
+    <span id="fechar-modal">&times;</span>
+    <h3>Créditos dos Ícones</h3>
+    <div class="creditos-lista">
+      <a href="https://www.flaticon.com/br/icone-gratis/chevron-baixo_8213476" target="_blank" rel="noopener noreferrer">Chevron baixo ícone criado por TenBystry - Flaticon</a>
+      <a href="https://www.flaticon.com/br/icones-gratis/garfo" target="_blank" rel="noopener noreferrer">Garfo ícones criados por Magnific - Flaticon</a>
+      <a href="https://www.flaticon.com/free-icons/bear" target="_blank" rel="noopener noreferrer">Bear icons created by LAFS - Flaticon</a>
+      <a href="https://www.flaticon.com/free-icons/mala" target="_blank" rel="noopener noreferrer">Mala icons created by iconfield - Flaticon</a> 
+      <a href="https://www.flaticon.com/free-icons/baby" target="_blank" rel="noopener noreferrer">Baby icons created by Magnific - Flaticon</a>
+      <a href="https://www.flaticon.com/free-icons/pistol" target="_blank" rel="noopener noreferrer">Pistol icons created by Vector Stall - Flaticon</a>
+      <a href="https://www.flaticon.com/free-icons/book" target="_blank" rel="noopener noreferrer">Book icons created by Roundicons Premium - Flaticon</a>
+      <a href="https://www.flaticon.com/br/icones-gratis/seta-esquerda" title="seta esquerda ícones">Seta esquerda ícones criados por tenBystry - Flaticon</a>
+      <a href="https://www.flaticon.com/br/icones-gratis/proximo" title="próximo ícones">Próximo ícones criados por tenBystry - Flaticon</a>
+      <a href="https://fonts.google.com/specimen/Carattere" target="_blank" rel="noopener noreferrer">Carattere Designed by Robert Leuschke — Google Fonts</a>
+    </div>
+  </div>
+</div>
+
+<!-- Modal de Créditos das Criadoras -->
+<div id="modal-criadoras" class="modal-oculto">
+  <div class="modal-conteudo">
+    <span id="fechar-modal-criadoras">&times;</span>
+
+    <h3>Criadoras</h3>
+
+    <div class="criadoras-lista">
+
+      <!-- CRIADORA 01 -->
+      <div class="criadora">
+        <h4>Giovanna</h4>
+
+        <p>
+          Criação de conteúdo, desenvolvimento e implementação do site.
+        </p>
+
+        <a
+          href="https://www.instagram.com/agiovannacriativa/"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="instagram-criadora"
+        >
+          @agiovannacriativa
+        </a>
+      </div>
+
+      <!-- CRIADORA 02 -->
+      <div class="criadora">
+        <h4>Leticia</h4>
+
+        <p>
+          Desenvolvimento, conteúdo e identidade visual.
+        </p>
+
+        <a
+          href="https://www.instagram.com/moolgany/"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="instagram-criadora"
+        >
+          @moolgany
+        </a>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<script src="assets/js/main.js"></script>
+</body>
 </html>
