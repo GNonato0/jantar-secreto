@@ -3365,4 +3365,959 @@ section h2 {
 
     transition-duration: 0.01ms !important;
   }
+
+/* =========================================================
+   MOBILE — AJUSTE PARA IPHONE E CELULARES
+========================================================= */
+
+@media (max-width: 700px) {
+
+  /* =========================
+     BASE MOBILE
+  ========================= */
+
+  html,
+  body {
+    width: 100%;
+    max-width: 100%;
+    overflow-x: hidden;
+  }
+
+  body {
+    font-size: 16px;
+  }
+
+
+  /* =========================
+     MENU
+  ========================= */
+
+  .navbar {
+    min-height: 58px;
+
+    width: 100%;
+
+    padding: 6px 52px 6px 8px;
+
+    gap: 2px;
+
+    justify-content: space-around;
+
+    overflow: hidden;
+  }
+
+  .navbar a {
+    padding: 10px 6px;
+
+    font-size: 0.56rem;
+
+    letter-spacing: 0.7px;
+
+    flex: 1;
+
+    min-width: 0;
+  }
+
+  .navbar a::after {
+    bottom: 3px;
+  }
+
+  .cloche-icon {
+    top: 0;
+    right: 5px;
+
+    width: 47px;
+    height: auto;
+  }
+
+
+  /* =========================
+     HERO
+  ========================= */
+
+  .hero {
+    min-height: calc(100svh - 58px);
+
+    width: 100%;
+
+    padding:
+      55px
+      16px
+      55px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .hero-content {
+    width: 100%;
+    max-width: 430px;
+
+    padding: 0;
+  }
+
+  .hero h1.logo-jantar {
+    width: 100%;
+    height: 175px;
+
+    margin: 0 auto;
+  }
+
+  .logo-jantar .jantar {
+    top: 0;
+    left: 50%;
+
+    font-size: clamp(4.5rem, 20vw, 6.5rem);
+
+    line-height: 0.7;
+
+    transform: translateX(-50%);
+  }
+
+  .logo-jantar .j {
+    font-size: 1.35em;
+  }
+
+  .logo-jantar .secreto {
+    left: 50%;
+    bottom: 20px;
+
+    font-size: clamp(3rem, 13vw, 4.7rem);
+
+    letter-spacing: -3px;
+
+    transform: translateX(-50%);
+  }
+
+  .hero p {
+    max-width: 360px;
+
+    margin: 25px auto 0;
+
+    padding: 0;
+
+    font-size: 0.57rem;
+
+    letter-spacing: 1.3px;
+
+    line-height: 1.7;
+  }
+
+  .arrow {
+    margin-top: 25px;
+  }
+
+  .arrow img {
+    width: 30px;
+    height: 30px;
+  }
+
+
+  /* =========================
+     TÍTULOS
+  ========================= */
+
+  section h2 {
+    font-size: 2.15rem;
+
+    line-height: 1.1;
+  }
+
+
+  /* =========================
+     CARDÁPIO
+  ========================= */
+
+  #cardapio {
+    width: 100%;
+
+    padding:
+      60px
+      12px
+      75px;
+  }
+
+  #cardapio > h2 {
+    margin-bottom: 28px;
+  }
+
+  .dias-cardapio {
+    width: 100%;
+
+    gap: 7px;
+
+    margin-bottom: 35px;
+
+    padding: 0 3px;
+  }
+
+  .dia-btn {
+    padding:
+      10px
+      12px;
+
+    font-size: 0.63rem;
+
+    letter-spacing: 0.4px;
+  }
+
+
+  /* =========================
+     TÍTULO DO DIA
+  ========================= */
+
+  .titulo-dia {
+    margin-bottom: 20px;
+  }
+
+  .titulo-dia span {
+    margin-bottom: 7px;
+
+    font-size: 0.62rem;
+
+    letter-spacing: 2px;
+  }
+
+  .titulo-dia h3 {
+    font-size: 1.75rem;
+  }
+
+
+  /* =========================
+     CARROSSEL DO CARDÁPIO
+  ========================= */
+
+  .menu-carousel {
+    width: 100%;
+
+    padding:
+      0
+      30px;
+
+    gap: 4px;
+  }
+
+  .menu-track {
+    width: 100%;
+
+    gap: 14px;
+
+    padding:
+      8px
+      2px
+      25px;
+
+    scroll-padding-inline: 2px;
+  }
+
+  .menu-card {
+    width: calc(100vw - 70px);
+    min-width: calc(100vw - 70px);
+    max-width: calc(100vw - 70px);
+
+    flex: 0 0 calc(100vw - 70px);
+
+    min-height: 0;
+    height: auto;
+
+    display: flex;
+    flex-direction: column;
+
+    border-radius: 4px;
+  }
+
+
+  /* FOTO */
+
+  .menu-card-imagem {
+    width: 100%;
+    height: 220px;
+
+    flex-shrink: 0;
+  }
+
+  .menu-card-imagem img {
+    object-position: center center;
+  }
+
+
+  /* INFORMAÇÕES */
+
+  .menu-card-info {
+    width: 100%;
+
+    min-height: 300px;
+
+    padding:
+      28px
+      22px;
+
+    justify-content: center;
+  }
+
+  .numero-prato {
+    top: 13px;
+    right: 17px;
+
+    font-size: 2.3rem;
+  }
+
+  .categoria-prato {
+    margin-bottom: 9px;
+
+    font-size: 0.62rem;
+
+    letter-spacing: 2px;
+  }
+
+  .menu-card-info h4 {
+    margin-bottom: 17px;
+
+    font-size: 1.65rem;
+
+    line-height: 1.08;
+  }
+
+  .menu-card-info p {
+    font-size: 0.88rem;
+
+    line-height: 1.6;
+  }
+
+
+  /* SETAS */
+
+  .menu-arrow {
+    width: 28px;
+    height: 28px;
+  }
+
+  .menu-arrow.prev {
+    left: 1px;
+  }
+
+  .menu-arrow.next {
+    right: 1px;
+  }
+
+
+  /* =========================
+     INDICADORES
+  ========================= */
+
+  .menu-indicadores {
+    margin-top: 12px;
+
+    gap: 8px;
+  }
+
+
+  /* =========================
+     AVALIAÇÕES
+  ========================= */
+
+  .avaliacoes-container {
+    width: 100%;
+
+    padding:
+      60px
+      10px
+      70px;
+  }
+
+  .carrossel-wrapper {
+    width: 100%;
+
+    margin-top: 25px;
+  }
+
+  .carrossel-track {
+    gap: 13px;
+
+    padding:
+      10px
+      4px
+      20px;
+
+    scroll-padding-inline: 4px;
+  }
+
+  .card-avaliacao {
+    width: calc(100vw - 45px);
+    min-width: calc(100vw - 45px);
+    max-width: calc(100vw - 45px);
+
+    flex: 0 0 calc(100vw - 45px);
+
+    padding: 21px;
+
+    border-radius: 20px;
+  }
+
+  .user-info {
+    gap: 12px;
+  }
+
+  .avatar {
+    width: 46px;
+    height: 46px;
+  }
+
+  .user-info h3 {
+    font-size: 1.15rem;
+  }
+
+  .card-avaliacao p {
+    min-height: auto;
+
+    font-size: 0.9rem;
+
+    line-height: 1.55;
+  }
+
+
+  /* =========================
+     RESERVA
+  ========================= */
+
+  .reserva {
+    min-height: auto;
+
+    width: 100%;
+
+    padding:
+      65px
+      10px
+      70px;
+  }
+
+  .reserva-card {
+    width: 100%;
+
+    max-width: 500px;
+  }
+
+  .reserva-detalhe {
+    width: 4px;
+  }
+
+  .reserva-conteudo {
+    padding:
+      42px
+      20px;
+  }
+
+  .reserva-legenda {
+    margin-bottom: 14px;
+
+    font-size: 0.59rem;
+
+    letter-spacing: 2.8px;
+  }
+
+  .reserva h2 {
+    margin-bottom: 23px;
+
+    font-size: 2.1rem;
+
+    line-height: 1.05;
+  }
+
+  .reserva-intro {
+    margin-bottom: 32px;
+
+    font-size: 0.88rem;
+
+    line-height: 1.65;
+  }
+
+
+  /* FORM */
+
+  #form-reserva {
+    display: grid;
+
+    grid-template-columns: 1fr;
+
+    gap: 19px;
+  }
+
+  .campo-mensagem {
+    grid-column: auto;
+  }
+
+  .campo {
+    gap: 8px;
+  }
+
+  .campo label {
+    font-size: 0.6rem;
+
+    letter-spacing: 1.8px;
+  }
+
+  .campo input,
+  .campo textarea,
+  .campo select {
+    width: 100%;
+
+    padding:
+      14px
+      14px;
+
+    font-size: 16px;
+  }
+
+  .campo textarea {
+    min-height: 120px;
+  }
+
+
+  /* HORÁRIOS */
+
+  .horarios {
+    display: grid;
+
+    grid-template-columns: repeat(3, 1fr);
+
+    gap: 8px;
+  }
+
+  .horario-btn {
+    width: 100%;
+    min-width: 0;
+
+    padding:
+      11px
+      5px;
+
+    font-size: 0.61rem;
+
+    text-align: center;
+  }
+
+
+  /* DIAS */
+
+  .dias-reserva {
+    display: grid;
+
+    grid-template-columns: repeat(3, 1fr);
+
+    gap: 8px;
+  }
+
+  .dia-reserva-btn {
+    width: 100%;
+    min-width: 0;
+
+    padding:
+      12px
+      5px;
+
+    font-size: 0.59rem;
+
+    text-align: center;
+  }
+
+
+  /* BOTÃO FINAL */
+
+  .reserva-final {
+    grid-column: auto;
+
+    flex-direction: column;
+
+    align-items: stretch;
+
+    gap: 18px;
+
+    margin-top: 5px;
+  }
+
+  .reserva-final p {
+    font-size: 0.7rem;
+  }
+
+  .reserva-final button {
+    width: 100%;
+
+    padding:
+      16px
+      18px;
+
+    white-space: normal;
+  }
+
+  .mensagem-sucesso {
+    padding: 19px;
+
+    font-size: 0.83rem;
+  }
+
+  .segredo {
+    display: none;
+  }
+
+
+  /* =========================
+     HISTÓRIA
+  ========================= */
+
+  .historia {
+    width: 100%;
+
+    padding:
+      70px
+      18px;
+  }
+
+  .historia-container {
+    grid-template-columns: 1fr;
+
+    gap: 50px;
+  }
+
+  .historia-imagem {
+    order: -1;
+
+    width: 100%;
+  }
+
+  .historia-imagem-moldura {
+    width: 100%;
+    max-width: 330px;
+
+    padding: 9px;
+
+    box-shadow:
+      9px 9px 0 #700000;
+  }
+
+  .historia-imagem-moldura img {
+    width: 100%;
+    height: 400px;
+  }
+
+  .historia-assinatura {
+    max-width: 330px;
+
+    margin-top: 20px;
+
+    font-size: 0.58rem;
+
+    letter-spacing: 2.5px;
+  }
+
+  .historia-legenda {
+    margin-bottom: 16px;
+
+    font-size: 0.59rem;
+
+    letter-spacing: 2.8px;
+  }
+
+  .historia-texto h2 {
+    margin-bottom: 27px;
+
+    font-size: 3rem;
+
+    line-height: 0.92;
+  }
+
+  .historia-texto p {
+    font-size: 0.92rem;
+
+    line-height: 1.75;
+  }
+
+  .historia-destaque {
+    font-size: 1.25rem !important;
+
+    line-height: 1.35 !important;
+  }
+
+  .historia-botao {
+    width: 100%;
+
+    justify-content: center;
+
+    margin-top: 20px;
+  }
+
+
+  /* =========================
+     MODAIS
+  ========================= */
+
+  #modal-creditos,
+  #modal-criadoras {
+    padding: 12px;
+  }
+
+  .modal-conteudo,
+  #modal-criadoras .modal-conteudo {
+    width: 100%;
+
+    max-height: 88svh;
+
+    padding:
+      25px
+      18px;
+
+    border-radius: 6px;
+  }
+
+  .modal-conteudo h3 {
+    padding-right: 30px;
+
+    font-size: 1rem;
+  }
+
+
+  /* =========================
+     RODAPÉ
+  ========================= */
+
+  #rodape {
+    padding:
+      28px
+      14px;
+  }
+
+  .footer-content {
+    flex-direction: column;
+
+    text-align: center;
+
+    gap: 18px;
+  }
+
+  .footer-botoes {
+    width: 100%;
+
+    flex-direction: column;
+
+    gap: 9px;
+  }
+
+  #btn-creditos,
+  #btn-criadoras,
+  .link-creditos {
+    width: 100%;
+
+    max-width: 300px;
+  }
+}
+
+
+/* =========================================================
+   IPHONE PEQUENO
+========================================================= */
+
+@media (max-width: 390px) {
+
+  .navbar {
+    padding-right: 47px;
+  }
+
+  .navbar a {
+    padding:
+      9px
+      4px;
+
+    font-size: 0.49rem;
+
+    letter-spacing: 0.3px;
+  }
+
+  .cloche-icon {
+    width: 43px;
+  }
+
+  .hero {
+    padding:
+      48px
+      12px
+      50px;
+  }
+
+  .hero h1.logo-jantar {
+    height: 160px;
+  }
+
+  .logo-jantar .jantar {
+    font-size: 4.35rem;
+  }
+
+  .logo-jantar .secreto {
+    bottom: 18px;
+
+    font-size: 2.75rem;
+
+    letter-spacing: -2px;
+  }
+
+  .hero p {
+    max-width: 330px;
+
+    font-size: 0.52rem;
+
+    letter-spacing: 1px;
+  }
+
+  #cardapio {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+
+  .menu-carousel {
+    padding-left: 27px;
+    padding-right: 27px;
+  }
+
+  .menu-card {
+    width: calc(100vw - 62px);
+    min-width: calc(100vw - 62px);
+    max-width: calc(100vw - 62px);
+
+    flex-basis: calc(100vw - 62px);
+  }
+
+  .menu-card-imagem {
+    height: 205px;
+  }
+
+  .menu-card-info {
+    min-height: 300px;
+
+    padding:
+      23px
+      18px;
+  }
+
+  .menu-card-info h4 {
+    font-size: 1.5rem;
+  }
+
+  .menu-card-info p {
+    font-size: 0.82rem;
+  }
+
+  .card-avaliacao {
+    width: calc(100vw - 30px);
+    min-width: calc(100vw - 30px);
+    max-width: calc(100vw - 30px);
+
+    flex-basis: calc(100vw - 30px);
+
+    padding: 18px;
+  }
+
+  .reserva {
+    padding-left: 7px;
+    padding-right: 7px;
+  }
+
+  .reserva-conteudo {
+    padding:
+      35px
+      16px;
+  }
+
+  .reserva h2 {
+    font-size: 1.85rem;
+  }
+
+  .historia {
+    padding:
+      60px
+      15px;
+  }
+
+  .historia-texto h2 {
+    font-size: 2.55rem;
+  }
+
+  .historia-imagem-moldura {
+    max-width: 280px;
+  }
+
+  .historia-imagem-moldura img {
+    height: 350px;
+  }
+
+  .historia-assinatura {
+    max-width: 280px;
+  }
+}
+
+
+/* =========================================================
+   IPHONE MUITO PEQUENO
+========================================================= */
+
+@media (max-width: 350px) {
+
+  .navbar a {
+    font-size: 0.44rem;
+
+    padding-left: 2px;
+    padding-right: 2px;
+  }
+
+  .cloche-icon {
+    width: 40px;
+  }
+
+  .hero h1.logo-jantar {
+    height: 145px;
+  }
+
+  .logo-jantar .jantar {
+    font-size: 3.9rem;
+  }
+
+  .logo-jantar .secreto {
+    font-size: 2.45rem;
+  }
+
+  .hero p {
+    font-size: 0.48rem;
+  }
+
+  .menu-carousel {
+    padding-left: 24px;
+    padding-right: 24px;
+  }
+
+  .menu-card {
+    width: calc(100vw - 56px);
+    min-width: calc(100vw - 56px);
+    max-width: calc(100vw - 56px);
+
+    flex-basis: calc(100vw - 56px);
+  }
+
+  .menu-card-imagem {
+    height: 190px;
+  }
+
+  .menu-card-info {
+    min-height: 300px;
+
+    padding:
+      21px
+      16px;
+  }
+
+  .menu-card-info h4 {
+    font-size: 1.4rem;
+  }
+
+  .menu-card-info p {
+    font-size: 0.79rem;
+  }
+}
 }
