@@ -3438,4 +3438,365 @@ section h2 {
 
     transition-duration: 0.01ms !important;
   }
+
+/* =========================================================
+   CORREÇÃO MOBILE — ANDROID + IOS
+========================================================= */
+
+html {
+  width: 100%;
+  overflow-x: clip;
+}
+
+body {
+  width: 100%;
+  min-width: 0;
+  overflow-x: clip;
+
+  /* Evita problemas com notch/status bar */
+  padding-top: env(safe-area-inset-top);
+}
+
+
+/* =========================================================
+   NAVBAR MOBILE
+========================================================= */
+
+@media (max-width: 700px) {
+
+  .navbar {
+    position: relative;
+
+    width: 100%;
+    min-height: 58px;
+
+    padding:
+      6px
+      58px
+      6px
+      8px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+
+    gap: 2px;
+
+    overflow: visible;
+  }
+
+  .navbar a {
+    flex: 1 1 0;
+
+    min-width: 0;
+
+    padding: 10px 4px;
+
+    font-size: clamp(0.48rem, 1.9vw, 0.58rem);
+    letter-spacing: clamp(0.2px, 0.25vw, 0.7px);
+
+    text-align: center;
+  }
+
+
+  /* =====================================================
+     CLOCHE
+  ===================================================== */
+
+  .cloche-icon {
+    position: absolute;
+
+    top: 50%;
+    right: 7px;
+
+    /*
+      Tamanho controlado pela largura da tela.
+      Fica entre 42px e 52px.
+    */
+    width: clamp(42px, 11vw, 52px);
+    height: auto;
+
+    max-width: 52px;
+
+    transform: translateY(-50%);
+
+    z-index: 1001;
+
+    object-fit: contain;
+
+    /* Evita o Safari interpretar alguma dimensão estranha */
+    flex-shrink: 0;
+  }
+
+  .cloche-icon:hover {
+    transform: translateY(-50%) scale(1.05);
+  }
+
+  .cloche-icon:active {
+    transform: translateY(-50%) scale(0.94);
+  }
+
+
+  /* =====================================================
+     HERO
+  ===================================================== */
+
+  .hero {
+    /*
+      dvh = altura REAL disponível no navegador mobile.
+      svh = fallback mais estável.
+    */
+    min-height: 0;
+
+    height: auto;
+
+    min-height: calc(100svh - 58px);
+
+    min-height: calc(100dvh - 58px);
+
+    width: 100%;
+
+    padding:
+      clamp(45px, 9vh, 70px)
+      16px
+      clamp(45px, 8vh, 65px);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    overflow: hidden;
+  }
+
+
+  .hero-content {
+    width: 100%;
+    max-width: 430px;
+
+    margin: 0 auto;
+  }
+
+
+  /* =====================================================
+     LOGO
+  ===================================================== */
+
+  .hero h1.logo-jantar {
+    width: 100%;
+    height: clamp(155px, 40vw, 175px);
+
+    margin: 0 auto;
+
+    overflow: visible;
+  }
+
+  .logo-jantar .jantar {
+    top: 0;
+    left: 50%;
+
+    /*
+      Não use uma combinação muito agressiva de vw
+      aqui porque o iOS pode deixar o logo grande demais.
+    */
+    font-size: clamp(4.2rem, 19vw, 6rem);
+
+    line-height: 0.7;
+
+    transform: translateX(-50%);
+  }
+
+  .logo-jantar .j {
+    font-size: 1.35em;
+  }
+
+  .logo-jantar .secreto {
+    left: 50%;
+    bottom: clamp(16px, 4vw, 22px);
+
+    font-size: clamp(2.8rem, 12.5vw, 4.6rem);
+
+    letter-spacing: -3px;
+
+    transform: translateX(-50%);
+  }
+
+
+  /* =====================================================
+     TEXTO DO HERO
+  ===================================================== */
+
+  .hero p {
+    width: 100%;
+    max-width: 360px;
+
+    margin: clamp(20px, 5vw, 28px) auto 0;
+
+    padding: 0;
+
+    font-size: clamp(0.5rem, 2vw, 0.58rem);
+
+    letter-spacing: clamp(0.9px, 0.4vw, 1.5px);
+
+    line-height: 1.7;
+
+    text-align: center;
+  }
+
+  .arrow {
+    margin-top: clamp(20px, 5vw, 28px);
+  }
+
+  .arrow img {
+    width: clamp(26px, 8vw, 32px);
+    height: clamp(26px, 8vw, 32px);
+  }
+}
+
+
+/* =========================================================
+   CELULARES PEQUENOS
+========================================================= */
+
+@media (max-width: 390px) {
+
+  .navbar {
+    min-height: 55px;
+
+    padding:
+      5px
+      52px
+      5px
+      5px;
+  }
+
+  .navbar a {
+    padding: 9px 3px;
+
+    font-size: 0.48rem;
+
+    letter-spacing: 0.2px;
+  }
+
+  .cloche-icon {
+    right: 5px;
+
+    width: 44px;
+    max-width: 44px;
+  }
+
+  .hero {
+    min-height: calc(100dvh - 55px);
+    min-height: calc(100svh - 55px);
+
+    padding:
+      42px
+      12px
+      45px;
+  }
+
+  .hero h1.logo-jantar {
+    height: 155px;
+  }
+
+  .logo-jantar .jantar {
+    font-size: 4.25rem;
+  }
+
+  .logo-jantar .secreto {
+    bottom: 17px;
+
+    font-size: 2.7rem;
+
+    letter-spacing: -2px;
+  }
+
+  .hero p {
+    max-width: 325px;
+
+    font-size: 0.5rem;
+
+    letter-spacing: 1px;
+  }
+}
+
+
+/* =========================================================
+   CELULARES MUITO PEQUENOS
+========================================================= */
+
+@media (max-width: 350px) {
+
+  .navbar {
+    min-height: 53px;
+
+    padding:
+      5px
+      48px
+      5px
+      3px;
+  }
+
+  .navbar a {
+    padding: 8px 2px;
+
+    font-size: 0.43rem;
+  }
+
+  .cloche-icon {
+    right: 4px;
+
+    width: 40px;
+    max-width: 40px;
+  }
+
+  .hero {
+    min-height: calc(100dvh - 53px);
+    min-height: calc(100svh - 53px);
+
+    padding:
+      38px
+      10px
+      40px;
+  }
+
+  .hero h1.logo-jantar {
+    height: 145px;
+  }
+
+  .logo-jantar .jantar {
+    font-size: 3.75rem;
+  }
+
+  .logo-jantar .secreto {
+    font-size: 2.35rem;
+  }
+
+  .hero p {
+    font-size: 0.46rem;
+  }
+}
+
+
+/* =========================================================
+   SAFARI IOS
+========================================================= */
+
+@supports (-webkit-touch-callout: none) {
+
+  .hero {
+    /*
+      No Safari, dvh acompanha melhor a área realmente
+      disponível quando a barra do navegador aparece/desaparece.
+    */
+    min-height: calc(100dvh - 58px);
+  }
+
+  .cloche-icon {
+    /*
+      Evita que a cloche encoste na área problemática
+      do topo em alguns iPhones.
+    */
+    top: calc(50% + 1px);
+  }
+}
 }
