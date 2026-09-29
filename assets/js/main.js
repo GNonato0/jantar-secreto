@@ -1,6 +1,8 @@
 document.addEventListener("DOMContentLoaded", () => {
 
+  // =========================================================
   // MENU SUPERIOR — CLOCHE
+  // =========================================================
 
   const clocheBtn = document.getElementById("cloche-btn");
   const navbar = document.getElementById("navbar");
@@ -11,7 +13,10 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
+
+  // =========================================================
   // SETA DA HOME → CARDÁPIO
+  // =========================================================
 
   const scrollArrow = document.getElementById("scroll-arrow");
   const cardapioSection = document.getElementById("cardapio");
@@ -213,6 +218,10 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
 
+    // ---------------------------------------------------------
+    // SCROLL
+    // ---------------------------------------------------------
+
     track.addEventListener(
       "scroll",
       atualizarIndicador,
@@ -223,99 +232,128 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
   // =========================================================
-// CARROSSEL AUTOMÁTICO — AVALIAÇÕES
-// =========================================================
+  // CARROSSEL AUTOMÁTICO — AVALIAÇÕES
+  // =========================================================
 
-const avaliacaoTrack =
-  document.querySelector(".carrossel-track");
+  const avaliacaoTrack =
+    document.querySelector(".carrossel-track");
 
-if (avaliacaoTrack) {
+  if (avaliacaoTrack) {
 
-  const cardsOriginais =
-    Array.from(avaliacaoTrack.children);
+    const cardsOriginais =
+      Array.from(avaliacaoTrack.children);
 
-  if (cardsOriginais.length) {
+    if (cardsOriginais.length) {
 
-    avaliacaoTrack.style.display = "flex";
-    avaliacaoTrack.style.gap = "20px";
-    avaliacaoTrack.style.overflowX = "auto";
-    avaliacaoTrack.style.scrollbarWidth = "none";
-    avaliacaoTrack.style.scrollBehavior = "auto";
+      // -------------------------------------------------------
+      // CONFIGURAÇÃO
+      // -------------------------------------------------------
 
-    // -------------------------------------------------------
-    // DUPLICA OS CARDS
-    // -------------------------------------------------------
-
-    cardsOriginais.forEach((card) => {
-
-      const clone = card.cloneNode(true);
-
-      clone.setAttribute("aria-hidden", "true");
-
-      avaliacaoTrack.appendChild(clone);
-
-    });
+      avaliacaoTrack.style.display = "flex";
+      avaliacaoTrack.style.gap = "20px";
+      avaliacaoTrack.style.overflowX = "auto";
+      avaliacaoTrack.style.scrollbarWidth = "none";
+      avaliacaoTrack.style.scrollBehavior = "auto";
 
 
-    let pausado = false;
-    let ultimoTempo = performance.now();
-
-    // PIXELS POR SEGUNDO
-    const velocidade = 35;
-
-
-    // -------------------------------------------------------
-    // LARGURA DO PRIMEIRO CONJUNTO
-    // -------------------------------------------------------
-
-    function larguraOriginal() {
-
-      let largura = 0;
+      // -------------------------------------------------------
+      // DUPLICA OS CARDS
+      // -------------------------------------------------------
 
       cardsOriginais.forEach((card) => {
-        largura += card.offsetWidth;
+
+        const clone = card.cloneNode(true);
+
+        clone.setAttribute(
+          "aria-hidden",
+          "true"
+        );
+
+        avaliacaoTrack.appendChild(clone);
+
       });
 
-      const estilo =
-        window.getComputedStyle(avaliacaoTrack);
 
-      const gap =
-        parseFloat(estilo.gap) || 0;
+      // -------------------------------------------------------
+      // VARIÁVEIS
+      // -------------------------------------------------------
 
-      largura +=
-        gap * (cardsOriginais.length - 1);
+      let pausado = false;
 
-      // gap entre o último original e o primeiro clone
-      largura += gap;
+      let ultimoTempo =
+        performance.now();
 
-      return largura;
-    }
+      const velocidade = 35;
 
 
-    // -------------------------------------------------------
-    // LOOP AUTOMÁTICO
-    // -------------------------------------------------------
+      // -------------------------------------------------------
+      // SETAS DAS AVALIAÇÕES
+      // -------------------------------------------------------
 
-    function autoScroll(tempoAtual) {
+      const btnPrevAvaliacao =
+        document.getElementById("btn-prev");
 
-      const delta =
-        tempoAtual - ultimoTempo;
-
-      ultimoTempo = tempoAtual;
+      const btnNextAvaliacao =
+        document.getElementById("btn-next");
 
 
-      if (!pausado) {
+      // -------------------------------------------------------
+      // LARGURA DO PRIMEIRO CONJUNTO
+      // -------------------------------------------------------
 
-        avaliacaoTrack.scrollLeft +=
-          (velocidade * delta) / 1000;
+      function larguraOriginal() {
 
+        let largura = 0;
+
+        cardsOriginais.forEach((card) => {
+
+          largura += card.offsetWidth;
+
+        });
+
+        const estilo =
+          window.getComputedStyle(
+            avaliacaoTrack
+          );
+
+        const gap =
+          parseFloat(estilo.gap) || 0;
+
+        /*
+         * Soma os espaços entre os cards originais
+         */
+        largura +=
+          gap *
+          (cardsOriginais.length - 1);
+
+        /*
+         * Espaço entre o último original
+         * e o primeiro clone
+         */
+        largura += gap;
+
+        return largura;
+      }
+
+
+      // -------------------------------------------------------
+      // CORRIGIR POSIÇÃO DO CARROSSEL
+      // -------------------------------------------------------
+
+      function corrigirLoop() {
 
         const limite =
           larguraOriginal();
 
+        if (!limite) {
+          return;
+        }
 
+        /*
+         * Se passou para a segunda cópia,
+         * volta para a primeira.
+         */
         if (
-          limite > 0 &&
           avaliacaoTrack.scrollLeft >= limite
         ) {
 
@@ -323,75 +361,256 @@ if (avaliacaoTrack) {
 
         }
 
+        /*
+         * Se passou para trás do começo,
+         * vai para o final da primeira cópia.
+         */
+        else if (
+          avaliacaoTrack.scrollLeft < 0
+        ) {
+
+          avaliacaoTrack.scrollLeft += limite;
+
+        }
+
       }
 
 
-      requestAnimationFrame(autoScroll);
+      // -------------------------------------------------------
+      // PRÓXIMA AVALIAÇÃO
+      // -------------------------------------------------------
+
+      function proximaAvaliacao() {
+
+        const distancia =
+          300;
+
+        pausado = true;
+
+        const limite =
+          larguraOriginal();
+
+        /*
+         * Se já estamos perto do final,
+         * reposiciona antes de avançar.
+         */
+        if (
+          limite > 0 &&
+          avaliacaoTrack.scrollLeft + distancia >= limite
+        ) {
+
+          avaliacaoTrack.scrollLeft -= limite;
+
+        }
+
+        avaliacaoTrack.scrollBy({
+          left: distancia,
+          behavior: "smooth"
+        });
+
+        setTimeout(() => {
+
+          corrigirLoop();
+
+          pausado = false;
+
+          ultimoTempo =
+            performance.now();
+
+        }, 700);
+
+      }
+
+
+      // -------------------------------------------------------
+      // AVALIAÇÃO ANTERIOR
+      // -------------------------------------------------------
+
+      function avaliacaoAnterior() {
+
+        const distancia =
+          300;
+
+        pausado = true;
+
+        const limite =
+          larguraOriginal();
+
+        /*
+         * Se estamos no início,
+         * pula para a segunda cópia.
+         *
+         * Isso permite continuar andando
+         * infinitamente para a esquerda.
+         */
+        if (
+          limite > 0 &&
+          avaliacaoTrack.scrollLeft <= 5
+        ) {
+
+          avaliacaoTrack.scrollLeft =
+            limite;
+
+        }
+
+        avaliacaoTrack.scrollBy({
+          left: -distancia,
+          behavior: "smooth"
+        });
+
+        setTimeout(() => {
+
+          corrigirLoop();
+
+          pausado = false;
+
+          ultimoTempo =
+            performance.now();
+
+        }, 700);
+
+      }
+
+
+      // -------------------------------------------------------
+      // BOTÃO ESQUERDA
+      // -------------------------------------------------------
+
+      if (btnPrevAvaliacao) {
+
+        btnPrevAvaliacao.addEventListener(
+          "click",
+          avaliacaoAnterior
+        );
+
+      }
+
+
+      // -------------------------------------------------------
+      // BOTÃO DIREITA
+      // -------------------------------------------------------
+
+      if (btnNextAvaliacao) {
+
+        btnNextAvaliacao.addEventListener(
+          "click",
+          proximaAvaliacao
+        );
+
+      }
+
+
+      // -------------------------------------------------------
+      // LOOP AUTOMÁTICO
+      // -------------------------------------------------------
+
+      function autoScroll(tempoAtual) {
+
+        const delta =
+          tempoAtual -
+          ultimoTempo;
+
+        ultimoTempo =
+          tempoAtual;
+
+        if (!pausado) {
+
+          avaliacaoTrack.scrollLeft +=
+            (velocidade * delta) / 1000;
+
+          const limite =
+            larguraOriginal();
+
+          if (
+            limite > 0 &&
+            avaliacaoTrack.scrollLeft >= limite
+          ) {
+
+            avaliacaoTrack.scrollLeft -= limite;
+
+          }
+
+        }
+
+        requestAnimationFrame(
+          autoScroll
+        );
+
+      }
+
+
+      // -------------------------------------------------------
+      // MOUSE — PAUSA
+      // -------------------------------------------------------
+
+      avaliacaoTrack.addEventListener(
+        "mouseenter",
+        () => {
+
+          pausado = true;
+
+        }
+      );
+
+
+      avaliacaoTrack.addEventListener(
+        "mouseleave",
+        () => {
+
+          pausado = false;
+
+          ultimoTempo =
+            performance.now();
+
+        }
+      );
+
+
+      // -------------------------------------------------------
+      // CELULAR — TOUCH
+      // -------------------------------------------------------
+
+      avaliacaoTrack.addEventListener(
+        "touchstart",
+        () => {
+
+          pausado = true;
+
+        },
+        {
+          passive: true
+        }
+      );
+
+
+      avaliacaoTrack.addEventListener(
+        "touchend",
+        () => {
+
+          pausado = false;
+
+          ultimoTempo =
+            performance.now();
+
+        },
+        {
+          passive: true
+        }
+      );
+
+
+      // -------------------------------------------------------
+      // INICIA CARROSSEL
+      // -------------------------------------------------------
+
+      requestAnimationFrame(
+        autoScroll
+      );
 
     }
 
-
-    // -------------------------------------------------------
-    // MOUSE
-    // -------------------------------------------------------
-
-    avaliacaoTrack.addEventListener(
-      "mouseenter",
-      () => {
-
-        pausado = true;
-
-      }
-    );
-
-
-    avaliacaoTrack.addEventListener(
-      "mouseleave",
-      () => {
-
-        pausado = false;
-
-        ultimoTempo =
-          performance.now();
-
-      }
-    );
-
-
-    // -------------------------------------------------------
-    // CELULAR
-    // -------------------------------------------------------
-
-    avaliacaoTrack.addEventListener(
-      "touchstart",
-      () => {
-
-        pausado = true;
-
-      },
-      { passive: true }
-    );
-
-
-    avaliacaoTrack.addEventListener(
-      "touchend",
-      () => {
-
-        pausado = false;
-
-        ultimoTempo =
-          performance.now();
-
-      },
-      { passive: true }
-    );
-
-
-    requestAnimationFrame(autoScroll);
-
   }
 
-}
 
   // =========================================================
   // RESERVA
@@ -404,28 +623,42 @@ if (avaliacaoTrack) {
     document.getElementById("btn-reserva");
 
   const mensagemSucesso =
-    document.getElementById("mensagem-sucesso");
+    document.getElementById(
+      "mensagem-sucesso"
+    );
 
   const novaReserva =
-    document.getElementById("nova-reserva");
+    document.getElementById(
+      "nova-reserva"
+    );
 
   const nomeInput =
     document.getElementById("nome");
 
   const mensagemInput =
-    document.getElementById("mensagem");
+    document.getElementById(
+      "mensagem"
+    );
 
   const diaEscolhido =
-    document.getElementById("dia-escolhido");
+    document.getElementById(
+      "dia-escolhido"
+    );
 
   const conviteDia =
-    document.getElementById("convite-dia");
+    document.getElementById(
+      "convite-dia"
+    );
 
   const codigoSecreto =
-    document.getElementById("codigo-secreto");
+    document.getElementById(
+      "codigo-secreto"
+    );
 
   const conviteNome =
-    document.querySelector(".convite-nome");
+    document.querySelector(
+      ".convite-nome"
+    );
 
   const feedbackDia =
     document.getElementById(
@@ -444,32 +677,47 @@ if (avaliacaoTrack) {
 
   botoesReserva.forEach((botao) => {
 
-    botao.addEventListener("click", () => {
+    botao.addEventListener(
+      "click",
+      () => {
 
-      const dia = botao.dataset.dia;
+        const dia =
+          botao.dataset.dia;
 
-      botoesReserva.forEach((outroBotao) => {
-        outroBotao.classList.remove("ativo");
-      });
+        botoesReserva.forEach(
+          (outroBotao) => {
 
-      botao.classList.add("ativo");
+            outroBotao.classList.remove(
+              "ativo"
+            );
 
+          }
+        );
 
-      if (diaEscolhido) {
-        diaEscolhido.value = dia;
+        botao.classList.add(
+          "ativo"
+        );
+
+        if (diaEscolhido) {
+
+          diaEscolhido.value =
+            dia;
+
+        }
+
+        if (feedbackDia) {
+
+          feedbackDia.textContent =
+            `✓ NOITE SELECIONADA: ${dia.toUpperCase()}`;
+
+          feedbackDia.classList.add(
+            "visivel"
+          );
+
+        }
+
       }
-
-
-      if (feedbackDia) {
-
-        feedbackDia.textContent =
-          `✓ NOITE SELECIONADA: ${dia.toUpperCase()}`;
-
-        feedbackDia.classList.add("visivel");
-
-      }
-
-    });
+    );
 
   });
 
@@ -483,7 +731,8 @@ if (avaliacaoTrack) {
     const caracteres =
       "ABCDEFGHJKLMNPQRSTUVWXYZ23456789";
 
-    let codigo = "JS-";
+    let codigo =
+      "JS-";
 
     for (let i = 0; i < 5; i++) {
 
@@ -493,7 +742,8 @@ if (avaliacaoTrack) {
           caracteres.length
         );
 
-      codigo += caracteres[indice];
+      codigo +=
+        caracteres[indice];
 
     }
 
@@ -533,7 +783,6 @@ if (avaliacaoTrack) {
             ? mensagemInput.value.trim()
             : "";
 
-
         if (!nome) {
 
           alert(
@@ -548,7 +797,6 @@ if (avaliacaoTrack) {
 
         }
 
-
         if (!dia) {
 
           alert(
@@ -559,10 +807,8 @@ if (avaliacaoTrack) {
 
         }
 
-
         const codigo =
           gerarCodigoSecreto();
-
 
         if (conviteDia) {
 
@@ -571,14 +817,12 @@ if (avaliacaoTrack) {
 
         }
 
-
         if (codigoSecreto) {
 
           codigoSecreto.textContent =
             codigo;
 
         }
-
 
         if (conviteNome) {
 
@@ -587,11 +831,11 @@ if (avaliacaoTrack) {
 
         }
 
+        formReserva.style.display =
+          "none";
 
-        formReserva.style.display = "none";
-
-        mensagemSucesso.style.display = "block";
-
+        mensagemSucesso.style.display =
+          "block";
 
         mensagemSucesso.scrollIntoView({
           behavior: "smooth",
@@ -618,23 +862,30 @@ if (avaliacaoTrack) {
       "click",
       () => {
 
-        formReserva.style.display = "grid";
+        formReserva.style.display =
+          "grid";
 
         mensagemSucesso.style.display =
           "none";
 
         formReserva.reset();
 
+        botoesReserva.forEach(
+          (botao) => {
 
-        botoesReserva.forEach((botao) => {
-          botao.classList.remove("ativo");
-        });
+            botao.classList.remove(
+              "ativo"
+            );
 
+          }
+        );
 
         if (diaEscolhido) {
-          diaEscolhido.value = "";
-        }
 
+          diaEscolhido.value =
+            "";
+
+        }
 
         if (feedbackDia) {
 
@@ -646,7 +897,6 @@ if (avaliacaoTrack) {
           );
 
         }
-
 
         formReserva.scrollIntoView({
           behavior: "smooth",
@@ -664,14 +914,19 @@ if (avaliacaoTrack) {
   // =========================================================
 
   const btnCreditos =
-    document.getElementById("btn-creditos");
+    document.getElementById(
+      "btn-creditos"
+    );
 
   const modalCreditos =
-    document.getElementById("modal-creditos");
+    document.getElementById(
+      "modal-creditos"
+    );
 
   const fecharModal =
-    document.getElementById("fechar-modal");
-
+    document.getElementById(
+      "fechar-modal"
+    );
 
   if (
     btnCreditos &&
@@ -690,7 +945,6 @@ if (avaliacaoTrack) {
       }
     );
 
-
     fecharModal.addEventListener(
       "click",
       () => {
@@ -702,13 +956,13 @@ if (avaliacaoTrack) {
       }
     );
 
-
     modalCreditos.addEventListener(
       "click",
       (event) => {
 
         if (
-          event.target === modalCreditos
+          event.target ===
+          modalCreditos
         ) {
 
           modalCreditos.classList.add(
@@ -728,16 +982,19 @@ if (avaliacaoTrack) {
   // =========================================================
 
   const btnCriadoras =
-    document.getElementById("btn-criadoras");
+    document.getElementById(
+      "btn-criadoras"
+    );
 
   const modalCriadoras =
-    document.getElementById("modal-criadoras");
+    document.getElementById(
+      "modal-criadoras"
+    );
 
   const fecharModalCriadoras =
     document.getElementById(
       "fechar-modal-criadoras"
     );
-
 
   if (
     btnCriadoras &&
@@ -756,7 +1013,6 @@ if (avaliacaoTrack) {
       }
     );
 
-
     fecharModalCriadoras.addEventListener(
       "click",
       () => {
@@ -768,13 +1024,13 @@ if (avaliacaoTrack) {
       }
     );
 
-
     modalCriadoras.addEventListener(
       "click",
       (event) => {
 
         if (
-          event.target === modalCriadoras
+          event.target ===
+          modalCriadoras
         ) {
 
           modalCriadoras.classList.add(
@@ -801,7 +1057,6 @@ if (avaliacaoTrack) {
         return;
       }
 
-
       if (modalCreditos) {
 
         modalCreditos.classList.add(
@@ -809,7 +1064,6 @@ if (avaliacaoTrack) {
         );
 
       }
-
 
       if (modalCriadoras) {
 
