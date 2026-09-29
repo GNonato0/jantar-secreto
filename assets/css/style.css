@@ -871,30 +871,37 @@ section h2 {
 
 .avaliacoes-container {
   width: 100%;
-
   padding: clamp(60px, 8vw, 90px) 20px;
-
   background-color: #4a0000;
-
   text-align: center;
 }
 
+/* Área que contém:
+   seta esquerda | carrossel | seta direita
+*/
 .carrossel-wrapper {
   width: 100%;
-  max-width: 1300px;
+  max-width: 1400px;
 
   margin: 30px auto 0;
 
-  display: block;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 
-  overflow: hidden;
+  gap: 20px;
 }
+
+/* =========================================================
+   CARROSSEL
+========================================================= */
 
 .carrossel-track {
   min-width: 0;
+  width: 100%;
+  max-width: 1250px;
 
   display: flex;
-
   gap: 25px;
 
   padding: 15px 5px;
@@ -911,6 +918,10 @@ section h2 {
   display: none;
 }
 
+/* =========================================================
+   CARDS
+========================================================= */
+
 .card-avaliacao {
   width: 380px;
   min-width: 380px;
@@ -921,7 +932,6 @@ section h2 {
   padding: 25px;
 
   background-color: white;
-
   color: black;
 
   border-radius: 25px;
@@ -936,11 +946,9 @@ section h2 {
 
 .user-info {
   display: flex;
-
   align-items: center;
 
   gap: 15px;
-
   margin-bottom: 15px;
 }
 
@@ -961,7 +969,6 @@ section h2 {
   margin: 0;
 
   font-size: 1.4rem;
-
   font-weight: bold;
 }
 
@@ -973,7 +980,6 @@ section h2 {
   color: #222;
 
   font-size: 0.95rem;
-
   line-height: 1.4;
 }
 
@@ -989,45 +995,117 @@ section h2 {
 
 
 /* =========================================================
-   SETAS AVALIAÇÕES
+   SETAS — CARROSSEL DE AVALIAÇÕES
 ========================================================= */
 
 .btn-carrossel {
-  width: 38px;
-  min-width: 38px;
-  height: 38px;
+  flex: 0 0 45px;
 
-  display: flex;
-
-  align-items: center;
-  justify-content: center;
+  width: 45px;
+  height: 45px;
 
   padding: 0;
 
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background: transparent;
   border: none;
-  border-radius: 50%;
-
-  background-color: white;
-
-  color: #700000;
-
-  font-size: 1.6rem;
-
-  line-height: 1;
 
   cursor: pointer;
 
-  box-shadow:
-    0 5px 15px rgba(0, 0, 0, 0.3);
-
-  transition: all 0.2s ease;
-
-  z-index: 3;
+  z-index: 10;
 }
 
-#btn-prev,
+/* NÃO usar position: absolute aqui.
+   As setas ficam naturalmente uma de cada lado
+   do carrossel.
+*/
+
+#btn-prev {
+  order: 1;
+}
+
+#carrossel-track {
+  order: 2;
+}
+
 #btn-next {
-  display: none;
+  order: 3;
+}
+
+.btn-carrossel::before {
+  font-size: 35px;
+  color: white;
+
+  line-height: 1;
+
+  transition:
+    transform 0.3s ease,
+    opacity 0.3s ease;
+}
+
+/* Seta esquerda */
+#btn-prev::before {
+  content: "‹";
+}
+
+/* Seta direita */
+#btn-next::before {
+  content: "›";
+}
+
+/* Esconde os caracteres < e > que estão no HTML */
+.btn-carrossel {
+  font-size: 0;
+}
+
+/* Efeito ao passar o mouse */
+#btn-prev:hover::before,
+#btn-next:hover::before {
+  transform: scale(1.2);
+  opacity: 0.7;
+}
+
+#btn-prev:active::before,
+#btn-next:active::before {
+  transform: scale(0.95);
+}
+
+
+/* =========================================================
+   RESPONSIVO
+========================================================= */
+
+@media (max-width: 768px) {
+
+  .carrossel-wrapper {
+    gap: 8px;
+  }
+
+  .carrossel-track {
+    gap: 15px;
+    padding: 15px 0;
+  }
+
+  .card-avaliacao {
+    width: 300px;
+    min-width: 300px;
+    max-width: 300px;
+    flex-basis: 300px;
+  }
+
+  .btn-carrossel {
+    flex: 0 0 35px;
+
+    width: 35px;
+    height: 45px;
+  }
+
+  .btn-carrossel::before {
+    font-size: 30px;
+  }
 }
 
 
@@ -2716,30 +2794,36 @@ section h2 {
 
   /* AVALIAÇÕES */
 
-  .avaliacoes-container {
-    width: 100%;
+ .avaliacoes-container {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+ }
 
-    padding:
-      60px
-      10px
-      70px;
-  }
+.carrossel-wrapper {
+  position: relative;
+  width: 100%;
+  display: flex;
+  align-items: center;
+}
 
-  .carrossel-wrapper {
-    width: 100%;
-    margin-top: 25px;
-  }
 
-  .carrossel-track {
-    gap: 13px;
+.carrossel-track {
+  width: 100%;
+  display: flex;
+  gap: 20px;
 
-    padding:
-      10px
-      4px
-      20px;
+  overflow-x: auto;
+  scroll-behavior: smooth;
 
-    scroll-padding-inline: 4px;
-  }
+  scrollbar-width: none;
+
+  padding: 20px 70px;
+}
+
+.carrossel-track::-webkit-scrollbar {
+  display: none;
+}
 
   .card-avaliacao {
     width: calc(100vw - 45px);
